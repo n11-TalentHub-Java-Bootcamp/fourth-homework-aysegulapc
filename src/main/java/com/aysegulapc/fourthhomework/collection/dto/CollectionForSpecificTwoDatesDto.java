@@ -1,15 +1,15 @@
 package com.aysegulapc.fourthhomework.collection.dto;
 
-import com.aysegulapc.fourthhomework.debt.entity.Debt;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class CollectionDto {
+@AllArgsConstructor
+public class CollectionForSpecificTwoDatesDto {
     private Long id;
     private Double amount;
     private Date createdDate;
-    private Debt debt;
     private Long userId;
 }

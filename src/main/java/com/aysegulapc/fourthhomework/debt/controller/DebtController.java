@@ -3,6 +3,7 @@ package com.aysegulapc.fourthhomework.debt.controller;
 import com.aysegulapc.fourthhomework.debt.dto.*;
 import com.aysegulapc.fourthhomework.debt.service.DebtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,8 @@ public class DebtController {
     }
 
     @GetMapping("/{startDate}/{endDate}")
-    public ResponseEntity getAllDebtBySpecificTwoDays(@PathVariable Date startDate, @PathVariable Date endDate) {
+    public ResponseEntity getAllDebtBySpecificTwoDays(@PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+                                                      @PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
         List<DebtForSpecificTwoDatesDto> debtForSpecificTwoDatesDtoList =
                 debtService.getAllDebtBySpecificTwoDate(startDate, endDate);
         return ResponseEntity.ok(debtForSpecificTwoDatesDtoList);
