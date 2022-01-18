@@ -16,6 +16,7 @@ import com.aysegulapc.fourthhomework.debt.service.entityService.DebtEntityServic
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,8 @@ public class CollectionService {
 
     private double calculateRateRaise(long days, DebtDto debt) {
         double rateRaise = 0.0;
-        if(debt.getExpiryDate().getTime() <= 1514780530) {
+        int timestampOf2018 = 1514780530;
+        if(debt.getExpiryDate().getTime() <= timestampOf2018) {
             rateRaise = 1.5 * days;
         } else {
             rateRaise = 2.0 * days;
